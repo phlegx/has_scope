@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'has_scope', path: '..'
+gemspec path: '..'
 
 gem 'actionpack', '~> 3.2.0'
 gem 'activesupport', '~> 3.2.0'

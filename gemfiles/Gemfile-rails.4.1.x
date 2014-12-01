@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gemspec
+gemspec path: '..'
 
-gem 'actionpack', '~> 4.2.0.rc1'
-gem 'activesupport', '~> 4.2.0.rc1'
+gem 'actionpack', '~> 4.1.0'
+gem 'activesupport', '~> 4.1.0'
 gem 'mocha', '~> 1.0.0', require: false
 gem 'rake'
