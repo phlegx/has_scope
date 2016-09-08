@@ -4,7 +4,7 @@
 [![Build Status](https://api.travis-ci.org/plataformatec/has_scope.png?branch=master)](http://travis-ci.org/plataformatec/has_scope)
 [![Code Climate](https://codeclimate.com/github/plataformatec/has_scope.png)](https://codeclimate.com/github/plataformatec/has_scope)
 
-Has scope allows you to easily create controller filters based on your resources named scopes.
+Has scope allows you to map incoming controller parameters to named scopes in your resources.
 Imagine the following model called graduations:
 
 ```ruby
@@ -131,6 +131,20 @@ has_scope :not_voted_by_me, :type => :boolean do |controller, scope|
 end
 ```
 
+## Keyword arguments
+
+Scopes with keyword arguments need to be called in a block:
+
+```ruby
+# in the model
+scope :for_course, lambda { |course_id:| where(course_id: course_id) }
+
+# in the controller
+has_scope :for_course do |controller, scope, value|
+  scope.for_course(course_id: value)
+end
+```
+
 ## Apply scope on every request
 
 To apply scope on every request set default value and `allow_blank: true`:
@@ -151,4 +165,4 @@ If you discover any bugs or want to drop a line, feel free to create an issue on
 
 http://github.com/plataformatec/has_scope/issues
 
-MIT License. Copyright 2009-2015 Plataformatec. http://blog.plataformatec.com.br
+MIT License. Copyright 2009-2016 Plataformatec. http://blog.plataformatec.com.br
